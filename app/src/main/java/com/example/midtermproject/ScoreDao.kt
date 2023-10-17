@@ -1,20 +1,28 @@
 package com.example.midtermproject
 
 import androidx.lifecycle.LiveData
+
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
-import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface ScoreDao {
-    @Query("SELECT * FROM scores ORDER BY score DESC")
-    fun getAllScores(): LiveData<List<Score>>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     suspend fun insert(score: Score)
+
+    @Update
+    suspend fun update(score: Score)
 
     @Delete
     suspend fun delete(score: Score)
+
+    @Query("SELECT * FROM scores WHERE scoreId = :scoreId")
+    fun get(scoreId: Long): LiveData<Score>
+
+    @Query("SELECT * FROM scores ORDER BY score ASC")
+    fun getAllScores(): LiveData<List<Score>>
 }

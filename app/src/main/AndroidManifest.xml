@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MidtermProject"
         tools:targetApi="31">
         <activity
-            android:name=".HighScoreActivity"
+            android:name=".HighScoreFragment"
             android:exported="false" />
         <activity
-            android:name=".GameActivity"
+            android:name=".GameFragment"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
